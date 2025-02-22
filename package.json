@@ -1,0 +1,44 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "quick-notion-web-save",
+  "title": "Quick Notion Web Save",
+  "description": "Quick Notion Web Save is a Raycast extension that enables fast and efficient bookmarking of web pages directly to your Notion databases. With a customizable keyboard shortcut, users can quickly save URLs along with form-based metadata, streamlining the process of web content organization in Notion. ",
+  "icon": "extension-icon.png",
+  "author": "Krishnakumar",
+  "categories": [
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "hello-world",
+      "title": "Hello World",
+      "description": "",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@extractus/article-extractor": "^8.0.17",
+    "@raycast/api": "^1.92.1",
+    "@raycast/utils": "^1.17.0",
+    "cheerio": "^1.0.0",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.11",
+    "@types/node": "20.8.10",
+    "@types/react": "18.3.3",
+    "@types/turndown": "^5.0.5",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
