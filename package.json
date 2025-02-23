@@ -11,14 +11,49 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "hello-world",
-      "title": "Hello World",
-      "description": "",
+      "name": "save-to-notion",
+      "title": "Save to Notion",
+      "description": "Convert webpage to Markdown and save as bookmark",
       "mode": "view"
+    },{
+      "name": "test",
+      "title": "Test",
+      "description": "Test",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "notion_token",
+      "type": "password",
+      "title": "Notion Token",
+      "required": true,
+      "description": "In Notion go to Settings & Members > Integration > Develop your own > New integration",
+      "placeholder": "secret_1l3892KIWCJHJVikbiyJ7",
+      "link": "https://www.notion.so/my-integrations"
+    },
+    {
+      "name": "open_in",
+      "type": "dropdown",
+      "title": "Open in...",
+      "required": false,
+      "default": "app",
+      "data": [
+        {
+          "title": "Notion Application",
+          "value": "app"
+        },
+        {
+          "title": "Default Browser",
+          "value": "web"
+        }
+      ],
+      "description": "Choose where to open Notion page."
     }
   ],
   "dependencies": {
     "@extractus/article-extractor": "^8.0.17",
+    "@notionhq/client": "^2.2.16",
     "@raycast/api": "^1.92.1",
     "@raycast/utils": "^1.17.0",
     "cheerio": "^1.0.0",

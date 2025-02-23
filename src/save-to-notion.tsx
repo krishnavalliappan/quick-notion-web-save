@@ -4,6 +4,7 @@ import extractAndConvertToMarkdown from "./browserUtils/htmlToMarkdown";
 import { Action, ActionPanel, Form, showToast, Toast } from "@raycast/api";
 import { useForm, FormValidation } from "@raycast/utils";
 import { MarkdownResult} from "./browserUtils/htmlToMarkdown";
+import { getNotionClient } from "./notion/oauth";
 
 interface SignUpFormValues {
   name: string;
@@ -13,6 +14,7 @@ interface SignUpFormValues {
 
 
 export default function Command() {
+  const notion = getNotionClient();
   const [extractedContent, setExtractedContent] = useState<MarkdownResult | null>(null);
 
   useEffect(() => {
