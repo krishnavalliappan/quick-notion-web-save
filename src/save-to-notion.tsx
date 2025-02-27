@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { BrowserExtension } from "@raycast/api";
-import extractAndConvertToMarkdown from "./browserUtils/htmlToMarkdown";
+import extractAndConvertToMarkdown from "@/browserUtils/htmlToMarkdown";
 import { Action, ActionPanel, Form, showToast, Toast } from "@raycast/api";
 import { useForm, FormValidation } from "@raycast/utils";
-import { MarkdownResult} from "./browserUtils/htmlToMarkdown";
-import { getNotionClient } from "./notion/oauth";
+import { MarkdownResult } from "@/browserUtils/htmlToMarkdown";
+import { getNotionClient } from "@/notion/client";
 
 interface SignUpFormValues {
   name: string;
   password: string;
   extractedContent: string;
 }
-
 
 export default function Command() {
   const notion = getNotionClient();
@@ -71,22 +70,26 @@ export default function Command() {
   // Once the asynchronous work is done, render the form with the extracted data.
   return (
     <>
-    <Form
-      actions={
-        <ActionPanel>
-          <Action.SubmitForm title="Submit" onSubmit={handleSubmit} />
-        </ActionPanel>
-      }
-    >
-      <Form.TextField
-        title="Title"
-        placeholder="Enter a title"
-        defaultValue={extractedContent.title}
-        {...itemProps.name}
-      />
-      <Form.PasswordField title="New Password" {...itemProps.password} />
-      <Form.TextArea title="Extracted Content" defaultValue={extractedContent.formattedContent} id="extractedContent" />
-    </Form>
+      <Form
+        actions={
+          <ActionPanel>
+            <Action.SubmitForm title="Submit" onSubmit={handleSubmit} />
+          </ActionPanel>
+        }
+      >
+        <Form.TextField
+          title="Title"
+          placeholder="Enter a title"
+          defaultValue={extractedContent.title}
+          {...itemProps.name}
+        />
+        <Form.PasswordField title="New Password" {...itemProps.password} />
+        <Form.TextArea
+          title="Extracted Content"
+          defaultValue={extractedContent.formattedContent}
+          id="extractedContent"
+        />
+      </Form>
     </>
   );
 }

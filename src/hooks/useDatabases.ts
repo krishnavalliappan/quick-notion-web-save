@@ -1,15 +1,14 @@
 import { useCachedPromise } from "@raycast/utils";
-import { fetchDatabase, fetchDatabases } from "../notion/api/databases";
+import { fetchDatabase, fetchDatabases } from "@/notion/api/databases/fetch";
 
-export function useDatabases(){
-    const result = useCachedPromise(()=>fetchDatabases());
+export function useDatabases() {
+  const result = useCachedPromise(() => fetchDatabases());
 
-    return result
+  return result;
 }
 
-export function useDatabase(databaseId: string | null | undefined){
+export function useDatabase(databaseId: string | null | undefined) {
+  const result = useCachedPromise(fetchDatabase, [databaseId]);
 
-    const result = useCachedPromise(()=>fetchDatabase(databaseId));
-
-    return result
+  return result;
 }
