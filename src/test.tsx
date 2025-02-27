@@ -1,7 +1,7 @@
 import { Form } from "@raycast/api";
 import { useDatabase, useDatabases } from "@/hooks/useDatabases";
 import { useState } from "react";
-
+import { PropertyField } from "@/components/PropertyField";
 export default function Command() {
   const { data: databases, isLoading } = useDatabases();
   const [selectedDatabaseId, setSelectedDatabaseId] = useState<string | undefined>(databases?.[0]?.id);
@@ -31,6 +31,9 @@ export default function Command() {
           />
         ))}
       </Form.Dropdown>
+      {database?.database_properties.map((property) => (
+        <PropertyField key={property.id} property={property} />
+      ))}
     </Form>
   );
 }

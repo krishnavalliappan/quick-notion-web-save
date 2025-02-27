@@ -1,4 +1,5 @@
-import { ReadablePropertyType, readablePropertyTypes } from "@/notion/types/common";
+import { ReadablePropertyType } from "@/notion/types/common";
+import { readablePropertyTypes } from "./PropertyFormFieldMapper";
 
 export function isNotNullOrUndefined<T>(input: null | undefined | T): input is T {
   return input != null;
