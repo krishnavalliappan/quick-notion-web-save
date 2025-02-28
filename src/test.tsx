@@ -10,7 +10,7 @@ export default function Command() {
   console.log(database?.database_properties);
 
   return (
-    <Form>
+    <Form >
       <Form.Dropdown
         isLoading={isLoading}
         id="database"

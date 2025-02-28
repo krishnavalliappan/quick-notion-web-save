@@ -18,33 +18,47 @@ export const readablePropertyTypes = [
   "status",
 ] as const;
 
+export const PropertyTypeMapper = (property: DatabaseProperty) => {
+  switch (property.type) {
+    case "title":
+    case "url":
+    case "email":
+    case "phone_number":
+    case "date":
+    case "formula":
+      return "string";
+    case "number":
+      return "number";
 
+      return "date";
+  }
+};
 
 export const PropertyFormFieldMapper = (property: DatabaseProperty) => {
-    switch (property.type) {
-        case "title":
-        case "number":
-        case "url":
-        case "email":
-        case "phone_number":
-        case "formula":
-            return Form.TextField;
-        case "rich_text":
-            return Form.TextArea;
-        case "date":
-            return Form.DatePicker;
-        case "checkbox":
-            return Form.Checkbox;
-        case "select":
-            return Form.Dropdown;
-        case "multi_select":
-        case "people":
-        case "relation":
-            return Form.TagPicker;
-        case "status":
-            return Form.Dropdown;
-        // Add other cases for different property types
-        default:
-            return Form.TextField; // Default fallback
-    }
+  switch (property.type) {
+    case "title":
+    case "number":
+    case "url":
+    case "email":
+    case "phone_number":
+    case "formula":
+      return Form.TextField;
+    case "rich_text":
+      return Form.TextArea;
+    case "date":
+      return Form.DatePicker;
+    case "checkbox":
+      return Form.Checkbox;
+    case "select":
+      return Form.Dropdown;
+    case "multi_select":
+    case "people":
+    case "relation":
+      return Form.TagPicker;
+    case "status":
+      return Form.Dropdown;
+    // Add other cases for different property types
+    default:
+      return Form.TextField; // Default fallback
+  }
 };
