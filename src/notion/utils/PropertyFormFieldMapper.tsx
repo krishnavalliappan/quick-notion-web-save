@@ -18,21 +18,6 @@ export const readablePropertyTypes = [
   "status",
 ] as const;
 
-export const PropertyTypeMapper = (property: DatabaseProperty) => {
-  switch (property.type) {
-    case "title":
-    case "url":
-    case "email":
-    case "phone_number":
-    case "date":
-    case "formula":
-      return "string";
-    case "number":
-      return "number";
-
-      return "date";
-  }
-};
 
 export const PropertyFormFieldMapper = (property: DatabaseProperty) => {
   switch (property.type) {
